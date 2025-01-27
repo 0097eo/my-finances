@@ -31,12 +31,12 @@ export const AuthProvider: React.FC<{children: React.ReactNode}> = ({ children }
 
   const checkToken = async () => {
     const storedToken = await SecureStore.getItemAsync('userToken');
+    
     if (storedToken) {
-      // Validate token with backend
       try {
         const response = await fetch(`${API_URL}/profile`, {
-          headers: { 
-            'Authorization': `Bearer ${storedToken}` 
+          headers: {
+            'Authorization': `Bearer ${storedToken}`
           }
         });
         
@@ -46,7 +46,7 @@ export const AuthProvider: React.FC<{children: React.ReactNode}> = ({ children }
           setToken(storedToken);
         }
       } catch (error) {
-        // Token invalid, logout
+        throw error
         await logout();
       }
     }
@@ -62,7 +62,6 @@ export const AuthProvider: React.FC<{children: React.ReactNode}> = ({ children }
       });
 
       const data = await response.json();
-      
       if (response.ok) {
         await SecureStore.setItemAsync('userToken', data.access_token);
         setToken(data.access_token);

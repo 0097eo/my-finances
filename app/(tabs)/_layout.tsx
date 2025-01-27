@@ -1,8 +1,10 @@
 import { Tabs } from 'expo-router';
 import { Home, PieChart, DollarSign, User } from 'lucide-react-native';
+import { ProtectedRoute } from '@/components/ProtectedRoute';
 
 export default function TabLayout() {
   return (
+    <ProtectedRoute>
     <Tabs screenOptions={{
       tabBarActiveTintColor: '#f4511e',
       tabBarInactiveTintColor: 'gray',
@@ -40,5 +42,6 @@ export default function TabLayout() {
         }}
       />
     </Tabs>
+    </ProtectedRoute>
   );
 }
