@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { View, Text, ActivityIndicator, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import { useAuth } from "@/components/AuthContext";
 import { API_URL } from "@/constants/api";
