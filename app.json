@@ -9,13 +9,16 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.okeloe.MyFinances"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.okeloe.MyFinances",
+      "googleServicesFile": "./android/app/google-services.json"
     },
     "web": {
       "bundler": "metro",
@@ -33,10 +36,36 @@
           "backgroundColor": "#ffffff"
         }
       ],
-      "expo-secure-store"
+      "expo-secure-store",
+      [
+        "expo-notifications",
+        {
+          "permissions": [
+            "SEND_NOTIFICATIONS"
+          ],
+          "notificationChannelId": "default",
+          "defaultNotificationChannelId": "default",
+          "sound": true,
+          "badge": true,
+          "priority": "HIGH",
+          "vibrate": [
+            0,
+            1000,
+            2000
+          ]
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "82e29b50-495e-4a03-ad92-2554704990d6"
+      }
     }
   }
 }
