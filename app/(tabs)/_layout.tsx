@@ -1,8 +1,17 @@
 import { Tabs } from 'expo-router';
 import { Home, PieChart, DollarSign, User } from 'lucide-react-native';
 import { ProtectedRoute } from '@/components/ProtectedRoute';
+import { useNotifications } from '@/hooks/useNotifications';
+import { useEffect } from 'react';
 
 export default function TabLayout() {
+
+  const { sendLocalNotification } = useNotifications();
+
+  useEffect(()=>{
+    sendLocalNotification()
+  }, [])
+
   return (
     <ProtectedRoute>
     <Tabs screenOptions={{
